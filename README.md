@@ -10,7 +10,7 @@
 
 # features:
 
-# core features
+# core features:
 
 ## 1.User Accounts:User registration and login.User profiles with order history.Password reset functionality.
 
@@ -26,7 +26,7 @@
 
 ## 7.Responsive Design:Ensure the website is usable on various devices (desktop, tablet, mobile).
 
-# Admin and management
+# Admin and management features:
 
 ## 8.Admin Dashboard:Overview of sales, orders, and customer activity.Quick access to product and user management.
 
@@ -34,7 +34,7 @@
 
 ## 10.Inventory Management:Track and manage stock levels.Receive notifications for low stock.
 
-# Security and User Trust:
+# Security and User Trust features:
 
 ## 11.Secure Payment Processing:Integration with reputable payment gateways.SSL encryption for secure transactions.
 
@@ -42,7 +42,7 @@
 
 ## 13.Trust Badges:Display security badges, SSL certificates, etc.
 
-# advanced feature
+# advanced feature:
 
 ## Personalized AI Assistant:a highly intelligent AI assistant that understands user preferences, learns from past behavior, and providespersonalized recommendations.
 
