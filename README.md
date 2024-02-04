@@ -8,9 +8,9 @@
 
 ## This project is developed using the Django web framework, renowned for its robustness, scalability, and adherence to the Model-View-Controller (MVC) architectural pattern. Django simplifies the development process by providing a high-level, Pythonic approach, incorporating features such as an ORM for database interactions, built-in authentication, and a templating engine for dynamic content rendering. Leveraging Django's comprehensive toolkit, our e-commerce platform will ensure a secure, efficient, and maintainable solution for online retail.
 
-# features:
+# Features:
 
-# core features:
+# Core Features:
 
 ## 1.User Accounts:User registration and login.User profiles with order history.Password reset functionality.
 
@@ -26,7 +26,7 @@
 
 ## 7.Responsive Design:Ensure the website is usable on various devices (desktop, tablet, mobile).
 
-# Admin and management features:
+# Admin and Management Features:
 
 ## 8.Admin Dashboard:Overview of sales, orders, and customer activity.Quick access to product and user management.
 
@@ -34,7 +34,7 @@
 
 ## 10.Inventory Management:Track and manage stock levels.Receive notifications for low stock.
 
-# Security and User Trust features:
+# Security and User Trust Features:
 
 ## 11.Secure Payment Processing:Integration with reputable payment gateways.SSL encryption for secure transactions.
 
@@ -42,7 +42,7 @@
 
 ## 13.Trust Badges:Display security badges, SSL certificates, etc.
 
-# advanced feature:
+# Advanced Feature:
 
 ## Personalized AI Assistant:a highly intelligent AI assistant that understands user preferences, learns from past behavior, and providespersonalized recommendations.
 
