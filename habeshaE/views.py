@@ -50,12 +50,12 @@ def home(request):
     return HttpResponse("Hello, world. You're at the habeshaE index.") 
 
 
-def upload_image(request):
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-    else:
-        form = UploadImageForm()
-    images = UploadedImage.objects.all()
-    return render(request, 'upload_image.html', {'form': form, 'images': images})
+# def upload_image(request):
+#     if request.method == 'POST':
+#         form = UploadImageForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#     else:
+#         form = UploadImageForm()
+#     images = UploadedImage.objects.all()
+#     return render(request, 'upload_image.html', {'form': form, 'images': images})
