@@ -1,4 +1,3 @@
-# yourapp/forms.py
 
 
 from django.contrib.auth.forms import UserCreationForm

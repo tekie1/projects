@@ -1,11 +1,11 @@
-from django.http import HttpResponse
+
 from django.shortcuts import render
 # views.py
 
 from .models import UploadedImage
-from .forms import UploadImageForm
 
-# # Create your views here.
+
+
 # from django.http import HttpResponse
 
 
@@ -47,15 +47,10 @@ def user_login(request):
 
     return render(request, 'login/login.html', {'form': form})
 def home(request):
-    return HttpResponse("Hello, world. You're at the habeshaE index.") 
+   images = UploadedImage.objects.all()
+   return render(request, 'home.html', {'images': images})
 
 
 def upload_image(request):
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-    else:
-        form = UploadImageForm()
-    images = UploadedImage.objects.all()
-    return render(request, 'upload_image.html', {'form': form, 'images': images})
+     images = UploadedImage.objects.all()
+     return render(request, 'home.html', {'images': images})

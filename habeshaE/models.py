@@ -1,7 +1,6 @@
 from django.db import models
 
-# Create your models here.
-# yourapp/models.py
+
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
@@ -44,7 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 class UploadedImage(models.Model):
     name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2,default=0.00)
     description = models.TextField()
     image = models.ImageField(upload_to='uploads/')
 
