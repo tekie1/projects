@@ -27,7 +27,7 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Redirect to login page after successful registration
+            return redirect('login')  
     else:
         form = CustomUserCreationForm()
 
@@ -41,7 +41,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('home')  # Replace 'home' with the name of your home page URL
+            return redirect('home') 
     else:
         form = UserLoginForm()
 

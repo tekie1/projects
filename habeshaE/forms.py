@@ -12,9 +12,9 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class UserLoginForm(AuthenticationForm):
-    # You can customize the form fields or keep them as is
+    
     class Meta:
-        model = User  # Use your User model
+        model = User  
         fields = ['username', 'password']
 class UploadImageForm(forms.ModelForm):
     class Meta:
