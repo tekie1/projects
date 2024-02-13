@@ -3,7 +3,7 @@ from django.contrib import admin
 
 
 
-from .models import UploadedImage
+from .models import UploadedImage,Category
 
 class UploadedImageAdmin(admin.ModelAdmin):
     pass
@@ -14,8 +14,15 @@ class UploadedImageAdmin(admin.ModelAdmin):
         if not obj.description:
             obj.description = ''
         obj.save()
+    list_display = ('name', 'category', 'price')  # Display category in the list view
+    list_filter = ('category',)  # Add a filter for category
+    search_fields = ('name', 'description')  # Add search functionality for name and description
 
+admin.site.register(Category)
 admin.site.register(UploadedImage, UploadedImageAdmin)
+
+
+
 
 
 

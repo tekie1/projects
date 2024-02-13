@@ -1,101 +1,92 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Uploaded Images</title>
-    <style>
-   
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .product-container {
-        width: 100%; 
-        height: 300px;
-        display: flex;
-        justify-content: space-between; 
-        align-items: center; 
-        margin: 10px 0;
-      }
-      .product-details-container{
-        display: flex;
-        flex-direction: column;
-      }
-      .product-container img {
-        max-width: 80%;
-        height: 300px; 
-      }
-      .navigation-btn {
-        background-color: #ccc;
-        padding: 10px;
-        border: none; 
-        cursor: pointer; 
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Uploaded Images:</h2>
-    <ul>
-      {% for product in images %}
-      <li>
-        <div class="product-container">
-       
-          <button class="navigation-btn" onclick="navigate('prev')">
-            Previous
-          </button>
-          <img src="{{ product.image.url }}" alt="Uploaded Image" />
-          <div class="product-details-container"> <h3>{{ product.name }}</h3>
-            <p>Price: ${{ product.price}}</p>
-            <p>{{ product.description }}</p></div>
-          
-          
-          <button class="navigation-btn" onclick="navigate('next')">
-            Next
-          </button>
+{% extends 'base.html' %} {% block content %}
+<nav class="navbar">
+  <div class="container">
+    <a class="navbar-brand" href="#">habeshaE</a>
+    <!-- Search form -->
+    <form class="form-inline" action="{% url 'home' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="search_performed" value="true" />
+      <div class="search-wrapper">
+        <input
+          class="form-control mr-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="keyword"
+          id="search-input"
+        />
+        <div class="overlay">
+          <select
+            class="form-control mr-2"
+            id="category-select"
+            name="category"
+          >
+            <option value="">All Categories</option>
+            {% for category in categories %}
+            <option value="{{ category.name }}">{{ category.name }}</option>
+            {% endfor %}
+          </select>
         </div>
-      </li>
-      {% empty %}
-      <li>No images uploaded yet.</li>
-      {% endfor %}
-    </ul>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</nav>
+{% if search_performed %}
+<h2>Search Results</h2>
+{% else %}
+<h2>All Products</h2>
+{% endif %}
 
-    <script>
-       
-        let currentIndex = 0;
-        
-       
-        showProduct(currentIndex);
-    
-        function navigate(direction) {
-          const products = document.querySelectorAll('.product-container');
-          
-          
-          if (direction === 'prev') {
-            currentIndex = (currentIndex - 1 + products.length) % products.length;
-          } else {
-            currentIndex = (currentIndex + 1) % products.length;
-          }
-    
-         
-          showProduct(currentIndex);
-        }
-    
-        function showProduct(index) {
-          const products = document.querySelectorAll('.product-container');
-    
-          
-          products.forEach(product => {
-            product.style.display = 'none';
-          });
-    
-          
-          products[index].style.display = 'flex';
-        }
-      </script>
-      }
-    </script>
-  </body>
-</html>
+<ul>
+  {% for product in products %}
+  <li>
+    <div class="product-container">
+      <button class="navigation-btn" onclick="navigate('prev')">
+        <h1>&lt;</h1>
+      </button>
+
+      <img src="{{ product.image.url }}" alt="Uploaded Image" />
+      <div class="product-details-container">
+        <h3>{{ product.name }}</h3>
+        <p>Price: ${{ product.price}}</p>
+        <p>{{ product.description }}</p>
+      </div>
+      <button class="navigation-btn" onclick="navigate('next')">
+        <h1>&gt;</h1>
+      </button>
+    </div>
+  </li>
+  {% empty %}
+  <li>No images uploaded yet.</li>
+  {% endfor %}
+</ul>
+
+<script>
+  let currentIndex = 0;
+
+  showProduct(currentIndex);
+
+  function navigate(direction) {
+    const products = document.querySelectorAll(".product-container");
+
+    if (direction === "prev") {
+      currentIndex = (currentIndex - 1 + products.length) % products.length;
+    } else {
+      currentIndex = (currentIndex + 1) % products.length;
+    }
+
+    showProduct(currentIndex);
+  }
+
+  function showProduct(index) {
+    const products = document.querySelectorAll(".product-container");
+
+    products.forEach((product) => {
+      product.style.display = "none";
+    });
+
+    products[index].style.display = "flex";
+  }
+</script>
+{% endblock %}
