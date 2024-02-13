@@ -63,9 +63,9 @@ This project is developed using the Django web framework, renowned for its robus
 
 3.Navigate to the project directory: cd habesha
 
-4.Apply database migrations: 'python manage.py migrate'
+4.Apply database migrations: `python manage.py migrate`
 
-5.Run the development server: 'python manage.py runserver'
+5.Run the development server: `python manage.py runserver`
 
 ## Usage Instructions
 
