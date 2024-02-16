@@ -20,6 +20,8 @@ from django.contrib.auth import login
 from .forms import UserLoginForm
 
 from django.db.models import Q
+
+
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
@@ -34,7 +36,7 @@ def register(request):
 
 def user_login(request):
     if request.method == "POST":
-        form = UserLoginForm(data=request.POST)  # Corrected this line
+        form = UserLoginForm(data=request.POST)  
         if form.is_valid():
             user = form.get_user()
             login(request, user)
@@ -48,12 +50,10 @@ def user_login(request):
 # views.py
 
 
-
-
 def home(request):
     if request.method == "POST":
         print("POST data:", request.POST)
-        search_performed = False
+
         category = request.POST.get("category")
         keyword = request.POST.get("keyword")
         print("Selected category:", category)
@@ -67,7 +67,9 @@ def home(request):
                 products = products.filter(category=category)
             if keyword:
                 # Filter products where the name contains the keyword or the description contains the keyword
-                products = products.filter(Q(name__icontains=keyword) | Q(description__icontains=keyword))
+                products = products.filter(
+                    Q(name__icontains=keyword) | Q(description__icontains=keyword)
+                )
     else:
         search_performed = False
         products = UploadedImage.objects.all()
@@ -82,7 +84,6 @@ def home(request):
             "search_performed": search_performed,
         },
     )
-
 
 
 def upload_image(request):

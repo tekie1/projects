@@ -7,7 +7,9 @@ This project is an e-commerce website that serves as a virtual storefront, enabl
 # Framework
 
 This project is developed using the Django web framework, renowned for its robustness, scalability, and adherence to the Model-View-Controller (MVC) architectural pattern. Django simplifies the development process by providing a high-level, Pythonic approach, incorporating features such as an ORM for database interactions, built-in authentication, and a templating engine for dynamic content rendering. Leveraging Django's comprehensive toolkit, our e-commerce platform will ensure a secure, efficient, and maintainable solution for online retail.
+
 ### Table of Contents
+
 **[Installation Instructions](#installation-instructions)**<br>
 **[Usage Instructions](#usage-instructions)**<br>
 **[Features](#Features)**<br>
@@ -15,7 +17,6 @@ This project is developed using the Django web framework, renowned for its robus
 **[Admin and Management Features](#admin-management-features)**<br>
 **[Security and User Trust Features](#security-and-user-trust-features)**<br>
 **[Support](#Support)**<br>
-
 
 ## Features
 
@@ -53,7 +54,7 @@ This project is developed using the Django web framework, renowned for its robus
 
 ## Advanced Feature:
 
-* Personalized AI Assistant:a highly intelligent AI assistant that understands user preferences, learns from past behavior, and providespersonalized recommendations.
+- Personalized AI Assistant:a highly intelligent AI assistant that understands user preferences, learns from past behavior, and provides personalized recommendations.
 
 ## Installation Instructions
 
@@ -62,25 +63,31 @@ This project is developed using the Django web framework, renowned for its robus
 2.Clone the repository: git clone https://github.com/tekie1/projects.git
 
 3.Navigate to the project directory: cd habesha
+4.In this project I am using SQL ,if you want to use SQLite you to modify the database settings in Settings.py to: `DATABASES = {
+     "default": {
+         "ENGINE": "django.db.backends.sqlite3",
+         "NAME": BASE_DIR / "db.sqlite3",
+     }
+ }`
 
-4.Apply database migrations: `python manage.py migrate`
+5.Apply database migrations: `python manage.py migrate`
 
-5.Run the development server: `python manage.py runserver`
+6.Run the development server: `python manage.py runserver`
 
 ## Usage Instructions
 
-* Access the application through the provided URL.
+- Access the application through the provided URL.
 
-* you can navigate to my first and simplest view using http://127.0.0.1:8000/habeshaE/
+- you can navigate to my first and simplest view using http://127.0.0.1:8000/habeshaE/
 
-* you can create superuser using the command:python manage.py createsuperuser
+- you can create superuser using the command:python manage.py createsuperuser
 
-* Follow the prompts to create a superuser.
+- Follow the prompts to create a superuser.
 
-* then navigate to the following url:http://127.0.0.1:8000/admin/
+- then navigate to the following url:http://127.0.0.1:8000/admin/
 
-* after navigating that url you can login using the user you created
+- after navigating that url you can login using the user you created
 
 ## Support
 
-* For any inquiries or issues, please contact me at tekiegebretinsae0@gmail.com.
+- For any inquiries or issues, please contact me at tekiegebretinsae0@gmail.com.

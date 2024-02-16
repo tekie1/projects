@@ -48,7 +48,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, default='Uncategorized')
+    name = models.CharField(max_length=100, default="Uncategorized")
+    class Meta:
+        'to custimaze the name of the model which is displayed in the admin page'
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.name
@@ -62,6 +66,7 @@ class UploadedImage(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="images"
     )
-    category = models.CharField(max_length=50, default='Uncategorized')
+    category = models.CharField(max_length=50, default="Uncategorized")
+
     def __str__(self):
         return self.name

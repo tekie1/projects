@@ -42,20 +42,24 @@
   {% for product in products %}
   <li>
     <div class="product-container">
-      <button class="navigation-btn" onclick="navigate('prev')">
-        <h1>&lt;</h1>
-      </button>
-
-      <img src="{{ product.image.url }}" alt="Uploaded Image" />
       <div class="product-details-container">
         <h3>{{ product.name }}</h3>
         <p>Price: ${{ product.price}}</p>
         <p>{{ product.description }}</p>
       </div>
+      <div class="image-navigation-buttons-container">
+      <button class="navigation-btn" onclick="navigate('prev')">
+        <h1>&lt;</h1>
+      </button>
+
+      <img src="{{ product.image.url }}" alt="Uploaded Image" />
+
       <button class="navigation-btn" onclick="navigate('next')">
         <h1>&gt;</h1>
       </button>
     </div>
+    </div>
+    <
   </li>
   {% empty %}
   <li>No images uploaded yet.</li>

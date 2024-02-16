@@ -81,7 +81,11 @@ ul {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .product-container {
+  .product-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .image-navigation-buttons-container {
     
     /* background-color: #546869;; */
     width: 100%; 
@@ -97,6 +101,8 @@ ul {
   .product-details-container{
     display: flex;
     flex-direction: column;
+    
+    
   }
   .product-container img {
     max-width: 100%;
@@ -110,7 +116,7 @@ ul {
   }
 
 .navbar {
-    background-color:  #36a5ad;;
+    background-color:  #2eacb3;
     padding: 10px 0;
   }
   
@@ -121,14 +127,23 @@ ul {
   .overlay select {
     position: absolute;
     top: 0;
-    right: 325px;
-    height: 40px;
+    right: 318px;
+    height: 41px;
+   
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
   }
-  
+  .search-wrapper input{
+   
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
   .search-wrapper button {
     position: absolute;
     top: 0;
     right: 0;
     height: 40px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
   }
   
