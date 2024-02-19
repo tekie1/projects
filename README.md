@@ -62,7 +62,7 @@ This project is developed using the Django web framework, renowned for its robus
 
 2.Clone the repository: git clone https://github.com/tekie1/projects.git
 
-3.Navigate to the project directory: cd habesha
+3.Navigate to the project directory: cd habesha.
 4.In this project I am using SQL ,if you want to use SQLite you to modify the database settings in Settings.py to: `DATABASES = {
      "default": {
          "ENGINE": "django.db.backends.sqlite3",
