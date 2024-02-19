@@ -1,6 +1,5 @@
 from django.db import models
-
-
+from django.contrib.auth.models import User
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -49,8 +48,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, default="Uncategorized")
+
     class Meta:
-        'to custimaze the name of the model which is displayed in the admin page'
+        "to custimaze the name of the model which is displayed in the admin page"
+
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
@@ -67,6 +68,28 @@ class UploadedImage(models.Model):
         Category, on_delete=models.CASCADE, related_name="images"
     )
     category = models.CharField(max_length=50, default="Uncategorized")
+    stock = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Cart for {self.user.username}"
+
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name="items")
+    product = models.ForeignKey(UploadedImage, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} in cart for {self.cart.user.username}"
+
+    def total_price(self):
+        return self.quantity * self.product.price

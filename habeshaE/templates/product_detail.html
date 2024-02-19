@@ -1,0 +1,24 @@
+<!-- product_detail.html -->
+{% extends 'base.html' %} 
+{% block content %}
+<div class="product-detail">
+  <div class="product-info">
+    <h2>{{ product.name }}</h2>
+    <p>Price: ${{ product.price }}</p>
+    <p>Available Stock: {{ product.stock }}</p>
+    <p>Description: {{ product.description }}</p>
+  </div>
+  <img src="{{ product.image.url }}" class="product-image" />
+  <div class="form-container">
+    <form action="{% url 'add_to_cart' product_id=product.id %}" method="post">
+      {% csrf_token %}
+      {% if product.stock > 0 %}
+        {{ form.as_p }}
+        <button type="submit">Add to Cart</button>
+      {% else %}
+        <p>This product is currently out of stock.</p>
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}

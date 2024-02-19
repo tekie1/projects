@@ -15,16 +15,18 @@ class UploadedImageAdmin(admin.ModelAdmin):
             obj.price = 0.00
         if not obj.description:
             obj.description = ""
-            obj.save()
+        if not obj.stock:
+            obj.stock = 0  
+        obj.save()  
 
-    list_display = ("name", "category", "price")  # Display category in the list view
-    list_filter = ("category",)  # Add a filter for category
+    list_display = ("name", "category", "price")  
+    list_filter = ("category",) 
     search_fields = (
         "name",
         "description",
-    )  # Add search functionality for name and description
+    )  
 
 
-admin.site.register(Category )
+admin.site.register(Category)
 admin.site.register(User)
 admin.site.register(UploadedImage, UploadedImageAdmin)
