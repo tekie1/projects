@@ -1,11 +1,16 @@
-<!-- login.html -->
-{% extends 'base.html' %}
-{% block title %}Login - My E-Commerce Site{% endblock %}
-{% block header %}User Login{% endblock %}
-{% block content %}
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+
+{% extends 'base.html' %} {% block content %}
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+
+    <button type="submit">Login</button>
+  </form>
+  <h2>If You Are New ?</h2>
+  <form action="{% url 'register' %}" method="get">
+    <button type="submit" class="registration-button">Register</button>
+  </form>
+</div>
 {% endblock %}

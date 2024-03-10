@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <nav class="navbar">
   <div class="container">
-    <a class="navbar-brand" href="#">habeshaE</a>
-
     <!-- Search form -->
     <form class="form-inline" action="{% url 'home' %}" method="post">
       {% csrf_token %}
@@ -17,6 +15,7 @@
           id="search-input"
         />
         <div class="overlay">
+          <a class="logo" href="{% url 'home' %}"> <h1>habeshaE</h1></a>
           <select
             class="form-control mr-2"
             id="category-select"
@@ -32,74 +31,89 @@
         {% comment %} shopping cart icon {% endcomment %}
         <a href="{% url 'cart' %}" class="cart-icon">
           <span class="cart-item-count">{{ total_cart_items }}</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          width="40"
-          height="40"
-         
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-          />
-         
-      </a>
-        </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            width="40"
+            height="40"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+          </svg>
+        </a>
+        <a href="#" class="account-icon" id="account-icon">
+          {% comment %} account-icon {% endcomment %}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            width="40"
+            height="40"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+            />
+          </svg>
+          <div class="dropdown-menu" id="dropdown-menu">
+            <!-- Dropdown content -->
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+
+            <a href="{% url 'logout' %}" class="dropdown-item" id="logout-link"
+              >Logout</a
+            >
+
+            >
+          </div>
+        </a>
       </div>
     </form>
-    
   </div>
 </nav>
 <div class="content-container">
-{% if cart_content %}
+  {% if cart_content %}
   <!-- Render cart.html content within content-container -->
-    {% include 'cart.html' %}
-{% else %}
-    {% if search_performed %}
-    <h2>Search Results</h2>
-   {% else %}
- <h2>All Products</h2>
+  {% include 'cart.html' %} {% else %} {% if search_performed %}
+  <h2>Search Results</h2>
+  {% else %}
+  <h2>All Products</h2>
   {% endif %}
-
+  <div class="list-of-products">
     <ul>
-  {% for product in products %}
-  <li>
-    <div class="product-container">
-      <a href="{% url 'product_detail' product.id %}">
-        <div class="product-details-container">
-          <h3>{{ product.name }}</h3>
-          <p>Price: ${{ product.price}}</p>
-          <p>{{ product.description }}</p>
-        </div>
-      </a>
-      <div class="image-navigation-buttons-container">
-        <button class="navigation-btn" onclick="navigate('prev')">
-          <h1>&lt;</h1>
-        </button>
+      {% for product in products %}
+      <li>
         <a href="{% url 'product_detail' product.id %}">
-          <img src="{{ product.image.url }}" alt="Uploaded Image" />
+          <div class="product-container">
+            <img src="{{ product.image.url }}" alt="Uploaded Image" />
+            <div class="product-details-container">
+              <h3>{{ product.name }}</h3>
+              <p>Price: ${{ product.price}}</p>
+              <p>{{ product.description }}</p>
+            </div>
+          </div>
         </a>
+      </li>
+      {% empty %}
+      <li>No images uploaded yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
 
-        <button class="navigation-btn" onclick="navigate('next')">
-          <h1>&gt;</h1>
-        </button>
-      </div>
-    </div>
-    
-  </li>
-  {% empty %}
-  <li>No images uploaded yet.</li>
-  {% endfor %}
- </ul>
-{% endif %}
+  {% endif %}
 </div>
 <script>
-  let currentIndex = 0;
+  // logic of navigation bottons
+  {% comment %} let currentIndex = 0;
 
   showProduct(currentIndex);
 
@@ -123,7 +137,29 @@
     });
 
     products[index].style.display = "flex";
-  }
-  
-</script>
+  } {% endcomment %}
+  // JavaScript to toggle dropdown menu visibility and handle logout
+  document.addEventListener("DOMContentLoaded", function () {
+    const accountIcon = document.getElementById("account-icon");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    accountIcon.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+      event.stopPropagation(); // Prevent the click event from bubbling up
+
+      // Toggle the "show" class on the dropdown menu
+      dropdownMenu.classList.toggle("show");
+    });
+
+    // Close the dropdown menu when clicking outside of it
+    document.addEventListener("click", function (event) {
+      if (
+        !dropdownMenu.contains(event.target) &&
+        !accountIcon.contains(event.target)
+      ) {
+        dropdownMenu.classList.remove("show");
+      }
+    });
+
+   
 {% endblock %}

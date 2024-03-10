@@ -35,6 +35,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "habeshaE",
+    "authentication",
+    "cart",
+    "products",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,7 +48,7 @@ INSTALLED_APPS = [
 
 
 # settings.py
-AUTH_USER_MODEL = "habeshaE.User"
+AUTH_USER_MODEL = "authentication.User"
 
 
 MIDDLEWARE = [
@@ -56,7 +59,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
 ]
 
 ROOT_URLCONF = "habesha.urls"
