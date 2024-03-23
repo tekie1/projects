@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="order-summary-container">
+    <h2>Order Summary</h2>
+
+        <ul class="order-item-list">
+            
+            <li class="order-item">
+                <span class="total-items">Quantity:{{ total_items }}</span>
+                <span class="tax">Tax:${{ tax}}</span>
+                <span class="tax">Shipping_cost:${{ shipping_cost}}</span>
+                <span class="total-order-price">Total: ${{ total_order_price }}</span>
+            </li>
+            
+        </ul>
+</div>
+{% endblock %}

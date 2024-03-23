@@ -1,0 +1,10 @@
+
+{% extends 'base.html' %} {% block content %}
+<div class="shipping-address-container">
+<h2>Shipping Address</h2>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Continue to Shipping Method</button>
+</form>
+<div>
+{% endblock %}

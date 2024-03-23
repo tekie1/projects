@@ -77,7 +77,7 @@ p{
 header{
     color: #f8f7f7;
 }
-ul {
+.products-list  {
   list-style-type: none;
   padding: 5px;
   margin: 5px;
@@ -253,6 +253,56 @@ a:hover {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+/* styling the choose_shipping_method template */
+.shipping-methods-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #259ca5;
+  /* padding: 10px; */
+  width: 600px;
+  margin-left: 450px;
+  margin-right: 450px;
+  border-radius: 16px;
+  max-width: 400px;
+  margin: 50px auto;
+ 
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.shipping-method-item {
+  margin-bottom: 10px;
+}
+.shipping-method-list{
+list-style-type: none;
+}
+.shipping-method-input {
+  position: relative;
+  right: 140px;
+} 
+
+
+
+
+
+.shipping-method-name {
+  font-weight: bold;
+}
+
+.shipping-method-cost {
+  margin-left: 10px;
+}
+
+.shipping-method-delivery {
+  margin-left: 10px;
+ 
+}
+
+
+
 /* styling edit_item_item template */
 .edit-container{
   display: flex;
@@ -333,6 +383,22 @@ a:hover {
 .total-price {
   margin-top: 20px;
 }
+/* styling shipping_address template */
+.shipping-address-container
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #259ca5;
+  padding: 20px;
+  width: 600px;
+  margin-left: 450px;
+  margin-right: 450px;
+  border-radius: 16px;
+  max-width: 400px;
+  margin: 50px auto;
+}
+
 /* css for dropdown menu  for account*/
 .dropdown-menu {
   display: none;
@@ -356,3 +422,49 @@ a:hover {
 .dropdown-item:hover {
   background-color: #f5f5f5;
 }
+/* styling order_summary template */
+/* styles.css */
+.order-summary-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #259ca5;
+  padding: 20px;
+  width: 600px;
+  margin-left: 450px;
+  margin-right: 450px;
+  border-radius: 16px;
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+.order-item-list {
+  list-style-type: none;
+  padding: 0;
+ 
+
+.order-item {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  
+ 
+}
+}
+
+
+
+.total-items,.tax,.total-order-price {
+  font-weight: bold;
+} 
+
+/* .tax,
+.total-order-price {
+  color: #555;
+}
+
+.total-order-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  /* color: #333; */
+

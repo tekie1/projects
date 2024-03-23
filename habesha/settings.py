@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "authentication",
     "cart",
     "products",
+    "checkout",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

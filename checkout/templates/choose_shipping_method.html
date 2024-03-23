@@ -1,0 +1,24 @@
+
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="shipping-methods-container">
+    <h2>Choose Shipping Method</h2>
+    <form method="post" class="shipping-method-form"  action={% url 'order_summary' %}>
+      {% csrf_token %}
+      <ul class="shipping-method-list">
+        {% for shipping_method in shipping_methods %}
+        <li class="shipping-method-item">
+          <input type="radio" name="shipping_method" value="{{ shipping_method.name }}" id="shipping_method.id" class="shipping-method-input">
+          <label for="shipping_method_{{ shipping_method.id }}" class="shipping-method-label">
+            <span class="shipping-method-name">{{ shipping_method.name }}</span> - 
+            <span class="shipping-method-cost">{{ shipping_method.cost }}</span> 
+            <span class="shipping-method-delivery">{{ shipping_method.estimated_delivery_time }}</span>
+          </label>
+        </li>
+        {% endfor %}
+      </ul>
+      <button type="submit" class="select-shipping-button">Select Shipping Method</button>
+    </form>
+</div>
+{% endblock %}

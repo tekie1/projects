@@ -29,6 +29,10 @@
   </div>
   {% endfor %}
   <p class="total-price">Total Price: ${{ total_price }}</p>
+
+  <form action="{% url 'shipping_address' %}" method="get">
+    <button type="submit" class=shipping-address">Proceed to Checkout</button>
+  </form>
   {% else %}
   <p>Your cart is empty.</p>
   {% endif %}

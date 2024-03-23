@@ -22,7 +22,8 @@ class ProductAdmin(admin.ModelAdmin):
         "description",
     )
 
-
-admin.site.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display=("name",)
+admin.site.register(Category,CategoryAdmin)
 
 admin.site.register(Product, ProductAdmin)

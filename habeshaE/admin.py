@@ -1,10 +1,10 @@
-# from django.contrib import admin
+from django.contrib import admin
 
 
 # from .models import UploadedImage, Category, User
 
 
-# admin.site.site_header = "habeshaE administration "
+admin.site.site_header = "habeshaE administration "
 
 
 # class UploadedImageAdmin(admin.ModelAdmin):

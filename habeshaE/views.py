@@ -67,6 +67,10 @@ def home(request):
 
         products = Product.objects.all()
         categories = Category.objects.all()
+        # if category == "All":
+        #     search_performed = False
+        #     products = Product.objects.all()
+        #     categories = Category.objects.all()
 
         if "search_performed" in request.POST:
             search_performed = True
@@ -76,6 +80,8 @@ def home(request):
                 products = products.filter(
                     Q(name__icontains=keyword) | Q(description__icontains=keyword)
                 )
+
+            search_performed = False
     else:
         search_performed = False
         products = Product.objects.all()

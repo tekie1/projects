@@ -89,7 +89,7 @@
   <h2>All Products</h2>
   {% endif %}
   <div class="list-of-products">
-    <ul>
+    <ul class="products-list">
       {% for product in products %}
       <li>
         <a href="{% url 'product_detail' product.id %}">
@@ -138,28 +138,56 @@
 
     products[index].style.display = "flex";
   } {% endcomment %}
-  // JavaScript to toggle dropdown menu visibility and handle logout
-  document.addEventListener("DOMContentLoaded", function () {
-    const accountIcon = document.getElementById("account-icon");
-    const dropdownMenu = document.getElementById("dropdown-menu");
 
-    accountIcon.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevent the default behavior of the link
-      event.stopPropagation(); // Prevent the click event from bubbling up
 
-      // Toggle the "show" class on the dropdown menu
-      dropdownMenu.classList.toggle("show");
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+      const accountIcon = document.getElementById("account-icon");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+      const cartIcon = document.querySelector(".cart-icon");
+      const contentContainer = document.querySelector(".content-container");
+      const productContainer=document.querySelector(".product-container");
 
-    // Close the dropdown menu when clicking outside of it
-    document.addEventListener("click", function (event) {
-      if (
-        !dropdownMenu.contains(event.target) &&
-        !accountIcon.contains(event.target)
-      ) {
-        dropdownMenu.classList.remove("show");
+
+      // Function to load the cart content
+      function loadCartContent() {
+        fetch("{% url 'cart' %}")
+          .then(response => response.text())
+          .then(data => {
+            contentContainer.innerHTML = data; // Replace content with cart template
+          })
+          .catch(error => {
+            console.error("Error loading cart content:", error);
+          });
       }
-    });
+       //Function to load the  product detail
 
-   
+
+      // Event listener for cart icon click
+      cartIcon.addEventListener("click", function (event) {
+        event.preventDefault();
+        loadCartContent();
+      });
+        //Event listener for product-container click
+
+      // Toggle dropdown menu visibility and handle logout
+      accountIcon.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default behavior of the link
+        event.stopPropagation(); // Prevent the click event from bubbling up
+
+        // Toggle the "show" class on the dropdown menu
+        dropdownMenu.classList.toggle("show");
+      });
+
+      // Close the dropdown menu when clicking outside of it
+      document.addEventListener("click", function (event) {
+        if (
+          !dropdownMenu.contains(event.target) &&
+          !accountIcon.contains(event.target)
+        ) {
+          dropdownMenu.classList.remove("show");
+        }
+      });
+    });
+</script>
+
 {% endblock %}

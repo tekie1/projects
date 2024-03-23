@@ -6,6 +6,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from authentication.views import register
 
+from checkout.views import (
+    choose_shipping_method,
+    process_checkout,
+    shipping_address_view,
+)
 from products.views import upload_product, product_detail
 from cart.views import add_to_cart, view_cart, edit_cart_item, remove_from_cart
 
@@ -31,6 +36,11 @@ urlpatterns = [
         remove_from_cart,
         name="remove_from_cart",
     ),
+    path("shipping_address/", shipping_address_view, name="shipping_address"),
+    path(
+        "choose_shipping_method/", choose_shipping_method, name="choose_shipping_method"
+    ),
+    path("order_summary/", process_checkout, name="order_summary"),
     # path("logout/", views.logout_view, name="logout"),
     path("habesha/", include("habeshaE.urls")),
     # Add other URL patterns as needed
